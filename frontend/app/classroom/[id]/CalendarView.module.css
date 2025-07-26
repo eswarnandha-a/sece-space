@@ -1,0 +1,22 @@
+.section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.eventList {
+  list-style: none;
+  padding: 0;
+}
+.eventBtn {
+  background: none;
+  border: none;
+  color: #1a4fa0;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  padding: 0.25rem 0;
+}
+.eventBtn:hover {
+  text-decoration: underline;
+}

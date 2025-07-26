@@ -1,0 +1,140 @@
+.container {
+  min-height: 100vh;
+  background: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.classroomInfo {
+  flex: 1;
+}
+
+.title {
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.details {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.code {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.subject {
+  background: #f1f5f9;
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.branch {
+  background: #f0fdf4;
+  color: #166534;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.facultyName {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.coverImageContainer {
+  flex: 0 0 200px;
+}
+
+.coverImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+  min-height: 60vh;
+}
+
+.materials {
+  flex: 0 0 65%;
+}
+
+.calendar {
+  flex: 0 0 35%;
+}
+
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.error {
+  color: #dc2626;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .materials, .calendar {
+    flex: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .header {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  
+  .coverImageContainer {
+    flex: none;
+  }
+  
+  .details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+}

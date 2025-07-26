@@ -1,0 +1,109 @@
+# Node.js Backend .gitignore
+
+# Environment variables (CRITICAL - DO NOT COMMIT)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Logs
+logs
+*.log
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+lib-cov
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads and file storage
+uploads/
+files/
+images/
+documents/
+temp/
+tmp/
+
+# Build output
+dist/
+build/
+
+# Cache directories
+.cache/
+.tmp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# SSL certificates and keys
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+
+# Config files with sensitive data
+config/production.js
+config/database.js
+config/secrets.js
+
+# Session store
+sessions/
+
+# PM2 process manager
+ecosystem.config.js
+.pm2/
+
+# Docker
+.dockerignore
+Dockerfile.prod
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Test files
+test-results/
+.nyc_output/
+
+# Cloudinary config
+cloudinary.json
+
+# JWT keys
+private.key
+public.key

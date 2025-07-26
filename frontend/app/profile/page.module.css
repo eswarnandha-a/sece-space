@@ -1,0 +1,364 @@
+/* Split-screen profile layout */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Top Section - White Background */
+.topSection {
+  flex: 1;
+  background: white;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(50vh - 80px);
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.profileImageContainer {
+  flex-shrink: 0;
+}
+
+.profileImage {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 4px solid #e3f2fd;
+}
+
+.defaultProfileIcon {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  border: 4px solid #e3f2fd;
+}
+
+.profileInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userBasicInfo {
+  margin-bottom: 1.5rem;
+}
+
+.userName {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
+}
+
+.userEmail {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0 0 0.5rem 0;
+}
+
+.userDetails {
+  font-size: 1rem;
+  color: #888;
+  margin: 0.25rem 0;
+}
+
+.socialButtons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.socialBtn {
+  background: white;
+  border: 2px solid #1a237e;
+  color: #1a237e;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 100px;
+}
+
+.socialBtn:hover:not(:disabled) {
+  background: #1a237e;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.socialBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.socialBtnIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: none;
+}
+
+/* Bottom Section - Blue Background */
+.bottomSection {
+  flex: 1;
+  background: #1a237e;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  gap: 3rem;
+}
+
+.brandSection {
+  flex: 1;
+  color: white;
+}
+
+.middleSection {
+  flex: 1;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.brandTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.brandSubtitle {
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.toggleSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeSettingsText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  opacity: 0.9;
+}
+
+.middleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.achievedClasses {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.facultyRemarks {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.footerLink {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footerLink:hover {
+  opacity: 1;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  background: white;
+  border: none;
+  color: #4a90e2;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 130px;
+  text-align: center;
+}
+
+.actionBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .topSection,
+  .bottomSection {
+    padding: 1.5rem 1rem;
+  }
+
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .profileImage,
+  .defaultProfileIcon {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+  }
+
+  .defaultProfileIcon {
+    font-size: 3rem;
+  }
+
+  .userName {
+    font-size: 2rem;
+  }
+
+  .socialButtons {
+    justify-content: center;
+  }
+
+  .socialBtn {
+    min-width: 80px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .brandTitle {
+    font-size: 2.5rem;
+  }
+
+  .brandSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .actionButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    justify-items: center;
+  }
+
+  .actionBtn {
+    min-width: 110px;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .topSection,
+  .bottomSection {
+    padding: 1rem;
+  }
+
+  .profileImage,
+  .defaultProfileIcon {
+    width: 120px;
+    height: 120px;
+    border-radius: 14px;
+  }
+
+  .defaultProfileIcon {
+    font-size: 2.5rem;
+  }
+
+  .userName {
+    font-size: 1.8rem;
+  }
+
+  .brandTitle {
+    font-size: 2rem;
+  }
+
+  .socialButtons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .actionButtons {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .socialBtn,
+  .actionBtn {
+    min-width: 90px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

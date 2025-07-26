@@ -1,0 +1,494 @@
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roleSelection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 50px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+  border: 2px solid #e2e8f0;
+  overflow: hidden;
+  width: 280px;
+  height: 50px;
+}
+
+.toggle:hover {
+  border-color: #3b82f6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.toggleOption {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+  color: #64748b;
+  z-index: 2;
+  position: relative;
+}
+
+.toggleOption.selected {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 46px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.toggleSlider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-2px);
+    opacity: 0.6;
+  }
+}
+
+.sliderLeft {
+  left: 4px;
+  transform: translateX(0);
+}
+
+.sliderRight {
+  left: 4px;
+  transform: translateX(100%);
+}
+
+/* Simple scale animation on click */
+.toggle:active {
+  animation: togglePress 0.2s ease;
+}
+
+@keyframes togglePress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes togglePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Glow effect on hover */
+.toggle:hover .toggleSlider {
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4), 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.emailContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+}
+
+.emailContainer:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.emailContainer:hover:not(:focus-within) {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.emailInput {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.emailInput::placeholder {
+  color: #9ca3af;
+}
+
+.emailSuffix {
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-left: 1px solid #e2e8f0;
+  white-space: nowrap;
+  flex-shrink: 0; /* Prevents suffix from shrinking */
+  min-width: fit-content;
+  z-index: 1;
+}
+
+.passwordContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+
+.passwordContainer:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.passwordContainer:hover:not(:focus-within) {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.passwordInput {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.passwordInput::placeholder {
+  color: #9ca3af;
+}
+
+.eyeButton {
+  background: none;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+}
+
+.eyeButton:hover {
+  color: #3b82f6;
+  background: #f1f5f9;
+  transform: scale(1.1);
+}
+
+.eyeButton:active {
+  transform: scale(0.95);
+}
+
+.passwordHint {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0.25rem 0 0 0;
+  font-style: italic;
+}
+
+.loginButton {
+  padding: 1rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 50px; /* Capsule shape - increased from 12px */
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  width: 60%; /* Reduce width to 60% instead of full width */
+  align-self: center; /* Center the button */
+  margin-top: 20px;
+}
+
+.loginButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.loginButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.loginButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loading {
+  opacity: 0.7;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 0.5rem;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 1rem; /* Add horizontal margins for whitespace */
+    box-sizing: border-box;
+  }
+  
+  .header {
+    display: none; /* Hide the Sign In header on mobile */
+  }
+  
+  .form {
+    gap: 0.5rem;
+  }
+  
+  .roleSelection {
+    margin-bottom: 0.2rem;
+  }
+  
+  .toggle {
+    width: 240px;
+    height: 42px;
+  }
+  
+  .toggleOption {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .emailContainer,
+  .passwordContainer {
+    border-radius: 8px;
+    border-width: 1.5px;
+  }
+  
+  .emailInput,
+  .passwordInput {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  .emailSuffix {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.75rem;
+  }
+  
+  .loginButton {
+    padding: 0.55rem;
+    font-size: 0.85rem;
+    border-radius: 50px; /* Capsule shape for mobile */
+    width: 70%; /* Reduced width for mobile */
+    align-self: center;
+  }
+  
+  .passwordHint {
+    font-size: 0.65rem;
+    margin: 0.1rem 0 0 0;
+  }
+  
+  .inputGroup {
+    gap: 0.25rem;
+  }
+  
+  .label {
+    font-size: 0.75rem;
+    margin-bottom: 0.05rem;
+  }
+  
+  .eyeButton {
+    padding: 0.5rem;
+    margin-right: 0.25rem;
+  }
+  
+  .error {
+    padding: 0.4rem;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+}
+
+/* Extra small screens (360px width) */
+@media (max-width: 400px) {
+  .formContainer {
+    padding: 0.4rem;
+    margin: 0 0.75rem; /* Add horizontal margins for whitespace */
+  }
+  
+  .form {
+    gap: 0.4rem;
+  }
+  
+  .toggle {
+    width: 200px;
+    height: 38px;
+  }
+  
+  .toggleOption {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  
+  .emailInput,
+  .passwordInput {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .emailSuffix {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .loginButton {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 50px; /* Capsule shape for extra small screens */
+    width: 75%; /* Slightly wider for very small screens for better touch target */
+    align-self: center;
+  }
+  
+  .label {
+    font-size: 0.7rem;
+  }
+  
+  .passwordHint {
+    font-size: 0.6rem;
+  }
+  
+  .eyeButton {
+    padding: 0.45rem;
+    margin-right: 0.2rem;
+  }
+}
