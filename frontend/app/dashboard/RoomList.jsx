@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Calendar from '../components/Calendar';
 import styles from './RoomList.module.css';
 
 export default function RoomList({ user }) {
@@ -135,10 +134,6 @@ export default function RoomList({ user }) {
             ))
           )}
         </div>
-      </div>
-      
-      <div className={styles.calendarSection}>
-        <Calendar userRole={user?.role || 'student'} />
       </div>
     </div>
   );

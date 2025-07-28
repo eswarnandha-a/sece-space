@@ -4,13 +4,16 @@ const User = require('../models/User');
 // Create classroom (Faculty only)
 exports.createClassroom = async (req, res) => {
   try {
-    const { name, facultyId } = req.body;
+    const { name, facultyId, branch, subject, coverImage } = req.body;
     const code = Math.random().toString(36).substring(2, 8).toUpperCase();
     
     const classroom = await Classroom.create({
       name,
       code,
-      faculty: facultyId
+      faculty: facultyId,
+      branch,
+      subject,
+      coverImage
     });
     
     res.status(201).json(classroom);

@@ -27,6 +27,7 @@ export default function Navbar({ showCreateRoom = false, onCreateRoom }) {
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.logo} onClick={handleDashboardClick}>
+            <img src="/secespace.png" alt="SECE Space Logo" className={styles.logoImage} />
             <h2>SECE Space</h2>
           </div>
         </div>

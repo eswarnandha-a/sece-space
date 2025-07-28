@@ -1,20 +1,10 @@
 .container {
-  display: flex;
-  gap: 2rem;
+  width: 100%;
   min-height: 70vh;
 }
 
 .roomsSection {
-  flex: 0 0 70%;
-}
-
-.calendarSection {
-  flex: 0 0 30%;
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: fit-content;
+  width: 100%;
 }
 
 .header {
@@ -151,7 +141,7 @@
 }
 
 .coverImage {
-  height: 160px;
+  height: 120px;
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -305,20 +295,13 @@
 }
 
 @media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-  }
-  
-  .roomsSection {
-    flex: none;
-  }
-  
-  .calendarSection {
-    flex: none;
-  }
-  
   .roomsGrid {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  
+  .coverImage {
+    height: 140px;
   }
 }
 
@@ -331,5 +314,52 @@
   
   .joinForm {
     flex-direction: column;
+  }
+
+  .roomsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .coverImage {
+    height: 120px;
+  }
+
+  .cardContent {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .roomTitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .header h2 {
+    font-size: 1.5rem;
+  }
+
+  .roomsGrid {
+    gap: 0.8rem;
+  }
+
+  .coverImage {
+    height: 100px;
+  }
+
+  .cardContent {
+    padding: 1.2rem 1rem;
+  }
+
+  .roomTitle {
+    font-size: 1rem;
+  }
+
+  .roomCode, .roomBranch, .roomSubject, .studentCount {
+    font-size: 0.8rem;
   }
 }

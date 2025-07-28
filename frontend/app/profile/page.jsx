@@ -100,7 +100,13 @@ export default function ProfilePage() {
       <div className={styles.bottomSection}>
         <div className={styles.bottomContent}>
           <div className={styles.brandSection}>
-            <h2 className={styles.brandTitle}>SECE Space</h2>
+            <div className={styles.brandContainer}>
+              <img src="/secespace.png" alt="SECE Space Logo" className={styles.brandLogo} />
+              <div className={styles.brandText}>
+                <h2 className={styles.brandTitle}>SECE</h2>
+                <h2 className={styles.brandTitle}>Space</h2>
+              </div>
+            </div>
             <p className={styles.brandSubtitle}>Connecting Classrooms<br />Streamlining Success</p>
           </div>
           
