@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
+    "framer-motion": "^12.23.11",
     "lottie-react": "^2.4.1",
     "next": "15.4.2",
     "react": "19.1.0",

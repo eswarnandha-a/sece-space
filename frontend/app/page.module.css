@@ -1,10 +1,6 @@
 .container {
   min-height: 100vh;
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 10vh;
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
 }
@@ -18,26 +14,28 @@
   z-index: 1;
 }
 
-.loginButton {
-  position: relative;
-  z-index: 2;
+.getStartedButton {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 3;
   background: transparent;
   color: #1a237e;
   border: 3px solid #1a237e;
-  padding: 1.2rem 3rem;
+  padding: 0.8rem 2rem;
   border-radius: 50px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
-  min-width: 220px;
+  min-width: 140px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
 }
 
-.loginButton::before {
+.getStartedButton::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -51,7 +49,7 @@
   z-index: -1;
 }
 
-.loginButton::after {
+.getStartedButton::after {
   content: '';
   position: absolute;
   top: 0;
@@ -63,7 +61,7 @@
   z-index: -1;
 }
 
-.loginButton:hover {
+.getStartedButton:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(26, 35, 126, 0.3);
   border-color: #3949ab;
@@ -71,19 +69,71 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-.loginButton:hover::before {
+.getStartedButton:hover::before {
   width: 300px;
   height: 300px;
   animation: wave 1.5s infinite;
 }
 
-.loginButton:hover::after {
+.getStartedButton:hover::after {
   left: 100%;
 }
 
-.loginButton:active {
+.getStartedButton:active {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(26, 35, 126, 0.4);
+}
+
+.textContainer {
+  position: fixed;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.gradientText {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(45deg, #1e3a8a, #3b82f6, #60a5fa, #93c5fd);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient 4s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gradientText:hover {
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
 }
 
 @keyframes wave {
@@ -103,26 +153,32 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .container {
-    padding-bottom: 8vh;
+  .getStartedButton {
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 120px;
   }
-  
-  .loginButton {
-    padding: 1rem 2.5rem;
-    font-size: 1rem;
-    min-width: 200px;
+
+  .textContainer {
+    bottom: 8vh;
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding-bottom: 6vh;
+  .getStartedButton {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    min-width: 100px;
   }
-  
-  .loginButton {
-    padding: 0.9rem 2rem;
-    font-size: 0.9rem;
-    min-width: 180px;
+
+  .textContainer {
+    bottom: 6vh;
+    padding: 0 0.5rem;
   }
 }
 

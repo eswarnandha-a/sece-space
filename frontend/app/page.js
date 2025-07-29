@@ -14,16 +14,22 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.splineContainer}>
         <Spline
-          scene="https://prod.spline.design/Rhe0kLXU3i9yEfxk/scene.splinecode"
+          scene="https://prod.spline.design/qf63BQ7C7Iydl21r/scene.splinecode"
         />
       </div>
       
       <button 
-        className={styles.loginButton}
+        className={styles.getStartedButton}
         onClick={handleContinueToLogin}
       >
-        Continue to Login
+        Get Started
       </button>
+
+      <div className={styles.textContainer}>
+        <h1 className={styles.gradientText}>
+          Welcome to Space of SECE
+        </h1>
+      </div>
     </div>
   );
 }
