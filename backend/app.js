@@ -1,9 +1,14 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+// Import database connection
+const connectDB = require('./config/database');
+
 const app = express();
+
+// Connect to MongoDB
+connectDB();
 
 // Middleware
 app.use(cors());
@@ -28,10 +33,5 @@ app.use('/api/students', studentRoutes);
 // Error handling middleware
 const errorMiddleware = require('./middleware/errorMiddleware');
 app.use(errorMiddleware);
-
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/course-manager')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
 
 module.exports = app;

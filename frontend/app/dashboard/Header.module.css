@@ -35,6 +35,24 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createButtonText {
+  display: inline;
+}
+
+.createButtonTextMobile {
+  display: none;
+}
+
+.createButtonIcon {
+  display: none;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .createButton:hover {
@@ -73,4 +91,69 @@
 .profileName {
   font-weight: 500;
   color: #374151;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .createButton {
+    padding: 0.6rem 1rem;
+    min-width: auto;
+    min-height: auto;
+    border-radius: 8px;
+  }
+
+  .createButtonText {
+    display: none;
+  }
+
+  .createButtonTextMobile {
+    display: inline;
+  }
+
+  .createButtonIcon {
+    display: none;
+  }
+
+  .profileName {
+    display: none;
+  }
+
+  .right {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .logo h2 {
+    font-size: 1.3rem;
+  }
+
+  .createButton {
+    padding: 0.5rem;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+  }
+
+  .createButtonTextMobile {
+    display: none;
+  }
+
+  .createButtonIcon {
+    display: inline;
+  }
+
+  .profileIcon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 }

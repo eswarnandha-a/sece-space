@@ -144,7 +144,7 @@
   height: 120px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #f8fafc;
 }
 
 .coverImage img {
@@ -164,7 +164,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #e2e8f0;
   position: relative;
   overflow: hidden;
 }
@@ -194,10 +194,10 @@
 }
 
 .placeholderText {
-  color: white;
+  color: #64748b;
   font-weight: 600;
   font-size: 0.9rem;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -317,7 +317,7 @@
   }
 
   .roomsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 1rem;
   }
 
@@ -344,6 +344,7 @@
   }
 
   .roomsGrid {
+    grid-template-columns: 1fr !important;
     gap: 0.8rem;
   }
 

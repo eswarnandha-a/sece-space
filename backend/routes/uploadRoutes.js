@@ -1,21 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const uploadController = require('../controllers/uploadController');
-const multerMiddleware = require('../middleware/multerMiddleware');
 
-// Profile image upload route
-router.post('/profile-image', multerMiddleware.single('file'), uploadController.uploadProfileImage);
+// Import controllers
+const ImageUploadController = require('../controllers/imageUploadController');
+const DocumentUploadController = require('../controllers/documentUploadController');
 
-// File upload route
-router.post('/file', multerMiddleware.single('file'), uploadController.uploadFile);
+// Import middleware
+const { uploadProfileImage, uploadCoverImage, uploadDocument } = require('../middleware/upload/multerConfig');
 
-// YouTube link route
-router.post('/youtube', uploadController.addYouTubeLink);
+// Image upload routes
+router.post('/profile-image', 
+  uploadProfileImage.single('file'), 
+  ImageUploadController.uploadProfileImage
+);
 
-// Get resources for classroom
-router.get('/classroom/:classroomId', uploadController.getClassroomResources);
+router.post('/cover-image', 
+  uploadCoverImage.single('file'), 
+  ImageUploadController.uploadCoverImage
+);
 
-// Delete resource
-router.delete('/:id', uploadController.deleteResource);
+// Document upload routes
+router.post('/document', 
+  uploadDocument.single('file'), 
+  DocumentUploadController.uploadDocument
+);
+
+router.post('/youtube', 
+  DocumentUploadController.addYouTubeLink
+);
+
+// Resource management routes
+router.get('/classroom/:classroomId', 
+  DocumentUploadController.getClassroomResources
+);
+
+router.delete('/resource/:id', 
+  DocumentUploadController.deleteResource
+);
+
+// Legacy route for backward compatibility
+router.post('/file', 
+  uploadDocument.single('file'), 
+  DocumentUploadController.uploadDocument
+);
 
 module.exports = router;

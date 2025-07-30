@@ -86,7 +86,7 @@
 
 .textContainer {
   position: fixed;
-  bottom: 10vh;
+  bottom: 15vh;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -162,8 +162,12 @@
   }
 
   .textContainer {
-    bottom: 8vh;
+    bottom: 12vh;
     padding: 0 1rem;
+  }
+
+  .gradientText {
+    font-size: 2.2rem;
   }
 }
 
@@ -177,8 +181,12 @@
   }
 
   .textContainer {
-    bottom: 6vh;
+    bottom: 10vh;
     padding: 0 0.5rem;
+  }
+
+  .gradientText {
+    font-size: 1.8rem;
   }
 }
 

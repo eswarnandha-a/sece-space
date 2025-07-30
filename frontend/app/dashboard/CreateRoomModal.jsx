@@ -40,9 +40,8 @@ export default function CreateRoomModal({ user, onClose }) {
       if (formData.coverImage) {
         const imageFormData = new FormData();
         imageFormData.append('file', formData.coverImage);
-        imageFormData.append('classroomId', 'temp'); // Will be updated after classroom creation
 
-        const uploadResponse = await fetch('http://localhost:5000/api/upload/file', {
+        const uploadResponse = await fetch('http://localhost:5000/api/upload/cover-image', {
           method: 'POST',
           body: imageFormData,
         });

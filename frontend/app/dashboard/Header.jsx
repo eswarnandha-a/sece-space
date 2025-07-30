@@ -21,7 +21,9 @@ export default function Header({ user, onCreateRoom }) {
       <div className={styles.right}>
         {user?.role === 'faculty' && (
           <button className={styles.createButton} onClick={onCreateRoom}>
-            Create Room
+            <span className={styles.createButtonText}>Create Room</span>
+            <span className={styles.createButtonTextMobile}>Create</span>
+            <span className={styles.createButtonIcon}>+</span>
           </button>
         )}
         

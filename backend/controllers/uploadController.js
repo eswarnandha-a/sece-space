@@ -45,13 +45,30 @@ exports.uploadFile = async (req, res) => {
     const b64 = Buffer.from(req.file.buffer).toString('base64');
     const dataURI = 'data:' + req.file.mimetype + ';base64,' + b64;
     
+    // Check if this is an image (for cover image) or other file
+    const isImage = req.file.mimetype.startsWith('image/');
+    
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(dataURI, {
-      resource_type: 'auto',
-      folder: 'course-manager'
+      resource_type: isImage ? 'image' : 'auto',
+      folder: isImage ? 'cover-images' : 'course-manager',
+      ...(isImage && {
+        transformation: [
+          { width: 400, height: 200, crop: 'fill' },
+          { quality: 'auto', fetch_format: 'auto' }
+        ]
+      })
     });
     
-    // Save to database
+    // If it's a cover image, just return the URL
+    if (isImage && classroomId === 'temp') {
+      return res.json({ 
+        url: result.secure_url,
+        message: 'Cover image uploaded successfully'
+      });
+    }
+    
+    // Save to database for regular files
     const resource = await Resource.create({
       classroom: classroomId,
       type: 'file',

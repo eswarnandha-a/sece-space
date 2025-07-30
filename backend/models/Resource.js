@@ -5,6 +5,7 @@ const resourceSchema = new mongoose.Schema({
   type: { type: String, enum: ['file', 'youtube'], required: true },
   url: String,
   filename: String,
+  publicId: String, // Cloudinary public ID for file deletion
   uploadedAt: { type: Date, default: Date.now }
 });
 

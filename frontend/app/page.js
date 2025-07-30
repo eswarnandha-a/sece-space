@@ -27,7 +27,8 @@ export default function Home() {
 
       <div className={styles.textContainer}>
         <h1 className={styles.gradientText}>
-          Welcome to Space of SECE
+          Welcome to<br />
+          Space of SECE
         </h1>
       </div>
     </div>
