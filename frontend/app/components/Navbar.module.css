@@ -117,6 +117,49 @@
   font-size: 0.9rem;
 }
 
+.profileContainer {
+  position: relative;
+}
+
+.dropdownArrow {
+  font-size: 0.7rem;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.profileDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 150px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.dropdownItem:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
 .logoutButton {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;

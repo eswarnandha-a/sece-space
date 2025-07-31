@@ -55,7 +55,7 @@ export default function CreateRoomModal({ user, onClose }) {
       // Create the classroom
       const classroomData = {
         name: `${formData.branchName} - ${formData.subject}`,
-        facultyId: user.id,
+        facultyId: user._id || user.id, // Handle both _id and id
         branch: formData.branchName,
         subject: formData.subject,
         coverImage: coverImageUrl

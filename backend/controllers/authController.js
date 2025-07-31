@@ -11,10 +11,33 @@ exports.login = async (req, res) => {
 
     let user = await User.findOne({ email });
     if (!user) {
-      user = await User.create({ email, role });
+      // Create new user with basic info
+      user = await User.create({ 
+        email, 
+        role,
+        password: 'SECE@123' // Default password
+      });
     }
 
-    res.json({ email: user.email, role: user.role, id: user._id });
+    // Return full user profile (excluding password)
+    const userResponse = {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+      name: user.name,
+      rollNumber: user.rollNumber,
+      year: user.year,
+      department: user.department,
+      branch: user.branch,
+      phone: user.phone,
+      socialLinks: user.socialLinks,
+      profileImage: user.profileImage,
+      bio: user.bio,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
+    };
+
+    res.json(userResponse);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -26,25 +49,12 @@ exports.updateProfile = async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
     
-    const user = await User.findByIdAndUpdate(id, updateData, { new: true });
+    const user = await User.findByIdAndUpdate(id, updateData, { new: true }).select('-password');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.json({ 
-      email: user.email, 
-      role: user.role, 
-      id: user._id,
-      name: user.name,
-      rollNumber: user.rollNumber,
-      year: user.year,
-      department: user.department,
-      branch: user.branch,
-      phone: user.phone,
-      socialLinks: user.socialLinks,
-      profileImage: user.profileImage,
-      bio: user.bio
-    });
+    res.json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

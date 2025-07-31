@@ -29,7 +29,11 @@ export default function Header({ user, onCreateRoom }) {
         
         <div className={styles.profile} onClick={handleProfileClick}>
           <div className={styles.profileIcon}>
-            {user?.email?.[0]?.toUpperCase()}
+            {user?.profileImage ? (
+              <img src={user.profileImage} alt="Profile" className={styles.profileImageSmall} />
+            ) : (
+              user?.email?.[0]?.toUpperCase()
+            )}
           </div>
           <span className={styles.profileName}>
             {user?.role === 'faculty' ? 'Faculty' : 'Student'}

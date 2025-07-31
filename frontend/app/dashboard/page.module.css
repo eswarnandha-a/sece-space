@@ -1,10 +1,22 @@
 .container {
   min-height: 100vh;
-  background: white;
+  background: #f8f9fa;
 }
 
 .main {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 0.75rem;
+  }
 }

@@ -1,18 +1,9 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 
-export default function Navbar({ showCreateRoom = false, onCreateRoom }) {
-  const [user, setUser] = useState(null);
+export default function Navbar({ user, showCreateRoom = false, onCreateRoom }) {
   const router = useRouter();
-
-  useEffect(() => {
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      setUser(JSON.parse(userData));
-    }
-  }, []);
 
   const handleProfileClick = () => {
     router.push('/profile');

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Navbar from '../components/Navbar';
+import EditProfileModal from '../dashboard/EditProfileModal';
 import styles from './page.module.css';
 
 export default function ProfilePage() {
@@ -11,17 +12,46 @@ export default function ProfilePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const userData = localStorage.getItem('user');
-    if (!userData) {
-      router.push('/login');
-      return;
-    }
-    setUser(JSON.parse(userData));
+    const fetchUserProfile = async () => {
+      const userData = localStorage.getItem('user');
+      if (!userData) {
+        router.push('/login');
+        return;
+      }
+
+      const parsedUser = JSON.parse(userData);
+      
+      try {
+        // Fetch fresh data from database
+        const response = await fetch(`http://localhost:5000/api/users/${parsedUser._id}`);
+        if (response.ok) {
+          const freshUserData = await response.json();
+          setUser(freshUserData);
+          // Update localStorage with fresh data from database
+          localStorage.setItem('user', JSON.stringify(freshUserData));
+        } else {
+          // Fallback to localStorage data if API fails
+          setUser(parsedUser);
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+        // Fallback to localStorage data if API fails
+        setUser(parsedUser);
+      }
+    };
+
+    fetchUserProfile();
   }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     router.push('/login');
+  };
+
+  const handleUserUpdate = (updatedUser) => {
+    setUser(updatedUser);
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+    setShowEditModal(false);
   };
 
   const handleSocialLink = (url) => {
@@ -79,7 +109,11 @@ export default function ProfilePage() {
                 <img src="/linkedin.png" alt="" className={styles.socialBtnIcon} />
                 Linkedin
               </button>
-              <button className={styles.socialBtn}>
+              <button 
+                className={styles.socialBtn}
+                onClick={() => handleSocialLink(user.socialLinks?.resume)}
+                disabled={!user.socialLinks?.resume}
+              >
                 <img src="/resume.png" alt="" className={styles.socialBtnIcon} />
                 Resume
               </button>
@@ -149,6 +183,13 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
+      
+      <EditProfileModal
+        user={user}
+        isOpen={showEditModal}
+        onClose={() => setShowEditModal(false)}
+        onUpdate={handleUserUpdate}
+      />
     </div>
   );
 }

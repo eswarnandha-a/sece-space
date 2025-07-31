@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   role: { type: String, enum: ['faculty', 'student'], required: true },
   name: { type: String },
   rollNumber: { type: String },
@@ -12,7 +13,8 @@ const userSchema = new mongoose.Schema({
   socialLinks: {
     github: { type: String },
     linkedin: { type: String },
-    portfolio: { type: String }
+    portfolio: { type: String },
+    resume: { type: String }
   },
   profileImage: { type: String },
   bio: { type: String }

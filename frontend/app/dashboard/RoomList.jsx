@@ -18,15 +18,23 @@ export default function RoomList({ user }) {
 
   const fetchRooms = async (userData) => {
     try {
+      const userId = userData._id || userData.id; // Handle both _id and id
       const endpoint = userData.role === 'faculty' 
-        ? `http://localhost:5000/api/classrooms/faculty/${userData.id}`
-        : `http://localhost:5000/api/classrooms/student/${userData.id}`;
+        ? `http://localhost:5000/api/classrooms/faculty/${userId}`
+        : `http://localhost:5000/api/classrooms/student/${userId}`;
       
       const response = await fetch(endpoint);
-      const data = await response.json();
-      setRooms(data);
+      if (response.ok) {
+        const data = await response.json();
+        // Ensure data is an array
+        setRooms(Array.isArray(data) ? data : []);
+      } else {
+        console.error('Failed to fetch rooms:', response.status);
+        setRooms([]); // Set empty array on error
+      }
     } catch (error) {
       console.error('Failed to fetch rooms:', error);
+      setRooms([]); // Set empty array on error
     } finally {
       setLoading(false);
     }
@@ -35,10 +43,11 @@ export default function RoomList({ user }) {
   const handleJoinClassroom = async (e) => {
     e.preventDefault();
     try {
+      const userId = user._id || user.id; // Handle both _id and id
       const response = await fetch('http://localhost:5000/api/classrooms/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: joinCode, studentId: user.id }),
+        body: JSON.stringify({ code: joinCode, studentId: userId }),
       });
       
       if (response.ok) {
@@ -87,7 +96,7 @@ export default function RoomList({ user }) {
         )}
 
         <div className={styles.roomsGrid}>
-          {rooms.length === 0 ? (
+          {!Array.isArray(rooms) || rooms.length === 0 ? (
             <div className={styles.emptyState}>
               <p>
                 {user?.role === 'faculty' 
@@ -103,32 +112,26 @@ export default function RoomList({ user }) {
                 className={styles.roomCard} 
                 onClick={() => router.push(`/classroom/${room._id}`)}
               >
-                <div className={styles.coverImage}>
+                <div className={styles.coverImageContainer}>
                   {room.coverImage ? (
-                    <img src={room.coverImage} alt={room.name} />
+                    <img src={room.coverImage} alt={room.name} className={styles.coverImage} />
                   ) : (
                     <div className={styles.placeholderCover}>
                       <div className={styles.placeholderContent}>
                         <span className={styles.placeholderIcon}>📚</span>
-                        <span className={styles.placeholderText}>{room.subject}</span>
                       </div>
                     </div>
                   )}
-                </div>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.roomTitle}>{room.name}</h3>
-                  <p className={styles.roomCode}>Code: {room.code}</p>
-                  {room.branch && (
-                    <p className={styles.roomBranch}>Branch: {room.branch}</p>
-                  )}
-                  {room.subject && (
-                    <p className={styles.roomSubject}>Subject: {room.subject}</p>
-                  )}
-                  {user?.role === 'faculty' && (
-                    <p className={styles.studentCount}>
-                      Students: {room.students?.length || 0}
-                    </p>
-                  )}
+                  <div className={styles.imageOverlay}>
+                    <div className={styles.overlayContent}>
+                      <div className={styles.roomInfo}>
+                        <span className={styles.roomDepartment}>{room.branch}</span>
+                        {room.subject && (
+                          <span className={styles.roomSubject}> - {room.subject}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))
