@@ -1,0 +1,289 @@
+/* Calendar Styles */
+.calendar {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.header h3 {
+  margin: 0 0 0.25rem 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Navigation */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.navButton {
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.navButton:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.monthYear {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Days of Week */
+.daysOfWeek {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.dayOfWeek {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+/* Days Grid */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.day {
+  background: white;
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.emptyDay {
+  background: #f9fafb;
+}
+
+.validDay {
+  cursor: default;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: #f3f4f6;
+}
+
+.dayNumber {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Event Indicator */
+.hasEvent {
+  background: #dbeafe !important;
+  border: 2px solid #3b82f6;
+}
+
+.hasEvent .dayNumber {
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.eventIndicator {
+  position: absolute;
+  bottom: 2px;
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e5e7eb;
+}
+
+.modalContent h4 {
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.input:focus, .textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancelButton, .addButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cancelButton {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 2px solid #e5e7eb;
+}
+
+.cancelButton:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.addButton {
+  background: #3b82f6;
+  color: white;
+}
+
+.addButton:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.addButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Tooltip */
+.tooltip {
+  position: fixed;
+  background: #1f2937;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  max-width: 200px;
+  pointer-events: none;
+  border: 1px solid #374151;
+}
+
+.tooltip h5 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+}
+
+.tooltip p {
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.9;
+  color: #e5e7eb;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .day {
+    min-height: 35px;
+  }
+
+  .dayNumber {
+    font-size: 0.75rem;
+  }
+
+  .eventIndicator {
+    width: 4px;
+    height: 4px;
+  }
+
+  .modalContent {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+
+  .cancelButton, .addButton {
+    width: 100%;
+  }
+}

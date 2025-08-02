@@ -17,4 +17,22 @@ router.get('/student/:studentId', classroomController.getStudentClassrooms);
 // Join classroom by code (Student)
 router.post('/join', classroomController.joinClassroom);
 
+// Add files to classroom
+router.post('/:id/files', classroomController.addFiles);
+
+// Delete file from classroom
+router.delete('/:id/files/:fileId', classroomController.deleteFile);
+
+// Add event to classroom
+router.post('/:id/events', classroomController.addEvent);
+
+// Archive classroom
+router.put('/:id/archive', classroomController.archiveClassroom);
+
+// Delete classroom
+router.delete('/:id', classroomController.deleteClassroom);
+
+// Migration: Add codes to existing classrooms
+router.post('/migrate/add-codes', classroomController.addCodesToExistingClassrooms);
+
 module.exports = router;

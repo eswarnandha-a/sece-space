@@ -1,0 +1,497 @@
+/* Room Page Styles */
+.container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+/* Header Section */
+.header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.coverImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.coverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholderCover {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.coverOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 1.5rem 2rem;
+}
+
+.roomTitle {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.roomSubject {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Options Menu */
+.optionsContainer {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.optionsButton {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.optionsButton:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+.optionsMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  z-index: 10;
+  min-width: 150px;
+}
+
+.optionItem {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.optionItem:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.optionItem:last-child:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Main Content */
+.mainContent {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 2rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Files Section */
+.filesSection {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.filesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.filesHeader h2 {
+  margin: 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.addFilesButton {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.addFilesButton:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Unit Filter */
+.unitFilter {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.unitButton {
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  color: #6b7280;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.unitButton:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.unitButton.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+/* Files Grid */
+.filesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+.fileCard {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fileCard:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.fileIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.fileName {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.3;
+}
+
+.fileUnit, .fileDate {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.fileActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.viewButton, .deleteButton, .downloadButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.viewButton {
+  background: #3b82f6;
+  color: white;
+}
+
+.viewButton:hover {
+  background: #2563eb;
+}
+
+.downloadButton {
+  background: #10b981;
+  color: white;
+}
+
+.downloadButton:hover {
+  background: #059669;
+}
+
+.downloadButton:disabled,
+.downloadButton.downloading {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.downloadButton:disabled:hover,
+.downloadButton.downloading:hover {
+  background: #9ca3af;
+}
+
+.deleteButton {
+  background: #ef4444;
+  color: white;
+}
+
+.deleteButton:hover {
+  background: #dc2626;
+}
+
+/* Calendar Section */
+.calendarSection {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  height: fit-content;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .coverImageContainer {
+    aspect-ratio: 3/1;
+  }
+
+  .roomTitle {
+    font-size: 1.5rem;
+  }
+
+  .roomSubject {
+    font-size: 1rem;
+  }
+
+  .filesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .unitFilter {
+    flex-wrap: wrap;
+  }
+
+  .filesHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .coverOverlay {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .coverOverlay {
+    padding: 0.75rem;
+  }
+
+  .roomTitle {
+    font-size: 1.25rem;
+  }
+
+  .roomSubject {
+    font-size: 0.9rem;
+  }
+
+  .filesSection, .calendarSection {
+    padding: 1rem;
+  }
+
+  .fileCard {
+    padding: 1rem;
+  }
+
+  .coverImageContainer {
+    aspect-ratio: 2.5/1;
+  }
+}
+
+/* Class Code Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.codeModal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.codeModal h3 {
+  margin: 0 0 1.5rem 0;
+  color: #111827;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.codeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f3f4f6;
+  border-radius: 8px;
+  border: 2px dashed #d1d5db;
+}
+
+.codeText {
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #3b82f6;
+  flex: 1;
+  letter-spacing: 2px;
+}
+
+.copyButton {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.copyButton:hover {
+  background: #2563eb;
+}
+
+.copyButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.copyButton:disabled:hover {
+  background: #9ca3af;
+}
+
+.codeDescription {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.closeButton {
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background: #4b5563;
+}

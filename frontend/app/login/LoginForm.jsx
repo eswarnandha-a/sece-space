@@ -48,8 +48,6 @@ export default function LoginForm() {
 
       const userData = await response.json();
       
-      console.log('Login successful, user data:', userData); // Debug log
-      
       // Store user data in localStorage
       localStorage.setItem('user', JSON.stringify(userData));
       

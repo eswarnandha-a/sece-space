@@ -1,0 +1,293 @@
+/* Add Files Modal Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header h2 {
+  margin: 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  color: #6b7280;
+}
+
+.closeButton:hover {
+  background: #f3f4f6;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #6b7280;
+  border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+  background: #f3f4f6;
+}
+
+.tab.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+  background: #f8faff;
+}
+
+/* Content */
+.content {
+  padding: 1.5rem;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.select, .input, .textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.select:focus, .input:focus, .textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* File Upload */
+.fileUpload {
+  position: relative;
+}
+
+.fileInput {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.uploadArea {
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.uploadArea:hover {
+  border-color: #3b82f6;
+  background: #f8faff;
+}
+
+.uploadIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.uploadArea p {
+  margin: 0.5rem 0;
+  color: #6b7280;
+}
+
+.supportedFormats {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* Selected Files */
+.selectedFiles {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.selectedFiles h4 {
+  margin: 0 0 0.5rem 0;
+  color: #374151;
+  font-weight: 600;
+}
+
+.fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.fileItem span {
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.removeButton {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.removeButton:hover {
+  background: #dc2626;
+}
+
+/* Preview */
+.preview {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #ecfdf5;
+  border-radius: 6px;
+  color: #059669;
+  font-size: 0.875rem;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cancelButton, .submitButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cancelButton {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 2px solid #e5e7eb;
+}
+
+.cancelButton:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.submitButton {
+  background: #3b82f6;
+  color: white;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.submitButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .header {
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .actions {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .cancelButton, .submitButton {
+    width: 100%;
+  }
+}

@@ -110,7 +110,7 @@ export default function RoomList({ user }) {
               <div 
                 key={room._id} 
                 className={styles.roomCard} 
-                onClick={() => router.push(`/classroom/${room._id}`)}
+                onClick={() => router.push(`/room/${room._id}`)}
               >
                 <div className={styles.coverImageContainer}>
                   {room.coverImage ? (

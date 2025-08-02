@@ -19,6 +19,17 @@ router.post('/cover-image',
   ImageUploadController.uploadCoverImage
 );
 
+// Room file upload routes
+router.post('/room-image', 
+  uploadDocument.single('file'), 
+  ImageUploadController.uploadRoomImage
+);
+
+router.post('/room-document', 
+  uploadDocument.single('file'), 
+  ImageUploadController.uploadRoomDocument
+);
+
 // Document upload routes
 router.post('/document', 
   uploadDocument.single('file'), 
