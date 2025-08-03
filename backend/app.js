@@ -36,11 +36,15 @@ connectDB();
 // CORS configuration
 const corsOptions = {
   origin: [
-    'http://localhost:3000', // Development
-    'https://sece-space.vercel.app' // Production
+    'http://localhost:3000', // Local development
+    'https://sece-space.vercel.app', // Production frontend
+    'https://sece-space-git-main-eswarnandha-as-projects.vercel.app', // Vercel preview URLs
+    'https://sece-space-*.vercel.app' // Any Vercel deployment
   ],
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept']
 };
 
 // Middleware

@@ -19,9 +19,10 @@ export default function RoomList({ user }) {
   const fetchRooms = async (userData) => {
     try {
       const userId = userData._id || userData.id; // Handle both _id and id
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
       const endpoint = userData.role === 'faculty' 
-        ? `http://localhost:5000/api/classrooms/faculty/${userId}`
-        : `http://localhost:5000/api/classrooms/student/${userId}`;
+        ? `${baseUrl}/api/classrooms/faculty/${userId}`
+        : `${baseUrl}/api/classrooms/student/${userId}`;
       
       const response = await fetch(endpoint);
       if (response.ok) {
@@ -44,7 +45,8 @@ export default function RoomList({ user }) {
     e.preventDefault();
     try {
       const userId = user._id || user.id; // Handle both _id and id
-      const response = await fetch('http://localhost:5000/api/classrooms/join', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+      const response = await fetch(`${baseUrl}/api/classrooms/join`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: joinCode, studentId: userId }),

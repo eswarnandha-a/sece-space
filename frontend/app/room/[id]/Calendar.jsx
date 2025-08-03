@@ -73,7 +73,8 @@ export default function Calendar({ events, onEventAdded, canAddEvents, roomId })
         roomId: roomId
       };
 
-      const response = await fetch(`http://localhost:5000/api/classrooms/${roomId}/events`, {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+      const response = await fetch(`${baseUrl}/api/classrooms/${roomId}/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -107,7 +107,8 @@ export default function ProfilePage() {
       const uploadFormData = new FormData();
       uploadFormData.append('file', file);
 
-      const response = await fetch('http://localhost:5000/api/upload/profile-image', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+      const response = await fetch(`${baseUrl}/api/upload/profile-image`, {
         method: 'POST',
         body: uploadFormData,
       });
@@ -139,7 +140,7 @@ export default function ProfilePage() {
     setSuccess('');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/profile/${user.id}`, {
+      const response = await fetch(`${baseUrl}/api/auth/profile/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -192,7 +193,7 @@ export default function ProfilePage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/change-password/${user.id}`, {
+      const response = await fetch(`${baseUrl}/api/auth/change-password/${user.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

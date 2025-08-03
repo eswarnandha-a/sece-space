@@ -133,7 +133,12 @@ exports.proxyFile = async (req, res) => {
               }
               // Set CORS headers for file serving
               const origin = req.headers.origin;
-              if (origin === 'http://localhost:3000' || origin === 'https://sece-space.vercel.app') {
+              const allowedOrigins = [
+                'http://localhost:3000',
+                'https://sece-space.vercel.app',
+                'https://sece-space-git-main-eswarnandha-as-projects.vercel.app'
+              ];
+              if (allowedOrigins.includes(origin) || (origin && origin.includes('sece-space') && origin.includes('vercel.app'))) {
                 res.setHeader('Access-Control-Allow-Origin', origin);
               } else {
                 res.setHeader('Access-Control-Allow-Origin', '*');
@@ -187,7 +192,12 @@ exports.proxyFile = async (req, res) => {
       }
       // Set CORS headers for file serving
       const origin = req.headers.origin;
-      if (origin === 'http://localhost:3000' || origin === 'https://sece-space.vercel.app') {
+      const allowedOrigins = [
+        'http://localhost:3000',
+        'https://sece-space.vercel.app',
+        'https://sece-space-git-main-eswarnandha-as-projects.vercel.app'
+      ];
+      if (allowedOrigins.includes(origin) || (origin && origin.includes('sece-space') && origin.includes('vercel.app'))) {
         res.setHeader('Access-Control-Allow-Origin', origin);
       } else {
         res.setHeader('Access-Control-Allow-Origin', '*');

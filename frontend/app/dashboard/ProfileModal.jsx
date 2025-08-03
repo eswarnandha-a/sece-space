@@ -82,7 +82,8 @@ const ProfileModal = ({ isOpen, onClose, user, onUpdateUser }) => {
     setSuccess('');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/profile/${user.id}`, {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+      const response = await fetch(`${baseUrl}/api/auth/profile/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +137,7 @@ const ProfileModal = ({ isOpen, onClose, user, onUpdateUser }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/change-password/${user.id}`, {
+      const response = await fetch(`${baseUrl}/api/auth/change-password/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

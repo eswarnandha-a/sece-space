@@ -51,7 +51,8 @@ export default function EditProfileModal({ user, isOpen, onClose, onUpdate }) {
         const imageFormData = new FormData();
         imageFormData.append('file', profileImage);
 
-        const imageResponse = await fetch('http://localhost:5000/api/upload/profile-image', {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+        const imageResponse = await fetch(`${baseUrl}/api/upload/profile-image`, {
           method: 'POST',
           body: imageFormData,
         });
@@ -74,7 +75,7 @@ export default function EditProfileModal({ user, isOpen, onClose, onUpdate }) {
         profileImage: profileImageUrl
       };
 
-      const response = await fetch(`http://localhost:5000/api/users/${user._id || user.id}`, {
+      const response = await fetch(`${baseUrl}/api/users/${user._id || user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

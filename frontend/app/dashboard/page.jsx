@@ -23,7 +23,8 @@ export default function DashboardPage() {
       
       try {
         // Fetch fresh data from database
-        const response = await fetch(`http://localhost:5000/api/users/${parsedUser._id}`);
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+        const response = await fetch(`${baseUrl}/api/users/${parsedUser._id}`);
         if (response.ok) {
           const freshUserData = await response.json();
           setUser(freshUserData);

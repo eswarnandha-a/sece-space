@@ -32,9 +32,10 @@ export default function AddFilesModal({ isOpen, onClose, onFilesAdded, roomId })
         formData.append('unit', selectedUnit);
         formData.append('description', description);
 
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
         const endpoint = file.type.startsWith('image/') 
-          ? 'http://localhost:5000/api/upload/room-image'
-          : 'http://localhost:5000/api/upload/room-document';
+          ? `${baseUrl}/api/upload/room-image`
+          : `${baseUrl}/api/upload/room-document`;
 
         const response = await fetch(endpoint, {
           method: 'POST',
@@ -51,7 +52,7 @@ export default function AddFilesModal({ isOpen, onClose, onFilesAdded, roomId })
       const uploadResults = await Promise.all(uploadPromises);
       
       // Add files to classroom
-      const response = await fetch(`http://localhost:5000/api/classrooms/${roomId}/files`, {
+      const response = await fetch(`${baseUrl}/api/classrooms/${roomId}/files`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -96,7 +97,8 @@ export default function AddFilesModal({ isOpen, onClose, onFilesAdded, roomId })
         throw new Error('Invalid YouTube URL');
       }
 
-      const response = await fetch(`http://localhost:5000/api/classrooms/${roomId}/files`, {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+      const response = await fetch(`${baseUrl}/api/classrooms/${roomId}/files`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

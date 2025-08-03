@@ -25,7 +25,7 @@ export default function RoomDetail({ classroomId }) {
   const fetchClassroomData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/classrooms/${classroomId}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com'}/api/classrooms/${classroomId}`);
       
       if (response.ok) {
         const data = await response.json();

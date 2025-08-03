@@ -41,7 +41,8 @@ export default function CreateRoomModal({ user, onClose }) {
         const imageFormData = new FormData();
         imageFormData.append('file', formData.coverImage);
 
-        const uploadResponse = await fetch('http://localhost:5000/api/upload/cover-image', {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sece-space.onrender.com';
+        const uploadResponse = await fetch(`${baseUrl}/api/upload/cover-image`, {
           method: 'POST',
           body: imageFormData,
         });
@@ -61,7 +62,7 @@ export default function CreateRoomModal({ user, onClose }) {
         coverImage: coverImageUrl
       };
 
-      const response = await fetch('http://localhost:5000/api/classrooms', {
+      const response = await fetch(`${baseUrl}/api/classrooms`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
