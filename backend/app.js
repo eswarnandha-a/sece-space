@@ -23,6 +23,8 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const userRoutes = require('./routes/userRoutes');
+const fileRoutes = require('./routes/fileRoutes');
+const debugRoutes = require('./routes/debugRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/classrooms', classroomRoutes);
@@ -31,6 +33,8 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/files', fileRoutes);
+app.use('/api/debug', debugRoutes);
 
 // Error handling middleware
 const errorMiddleware = require('./middleware/errorMiddleware');

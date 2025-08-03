@@ -1,4 +1,4 @@
-"use client";
+
 import { useState, useEffect } from 'react';
 import MaterialsList from './MaterialsList';
 import CalendarView from './CalendarView';

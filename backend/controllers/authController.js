@@ -14,7 +14,21 @@ exports.login = async (req, res) => {
       user = await User.create({ email, role });
     }
 
-    res.json({ email: user.email, role: user.role, id: user._id });
+    // Return complete user profile data
+    res.json({ 
+      email: user.email, 
+      role: user.role, 
+      id: user._id,
+      name: user.name || '',
+      rollNumber: user.rollNumber || '',
+      year: user.year || '',
+      department: user.department || '',
+      branch: user.branch || '',
+      phone: user.phone || '',
+      socialLinks: user.socialLinks || {},
+      profileImage: user.profileImage || '',
+      bio: user.bio || ''
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

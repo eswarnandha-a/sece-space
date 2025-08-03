@@ -273,7 +273,7 @@
   margin-top: 1rem;
 }
 
-.viewButton, .deleteButton, .downloadButton {
+.downloadButton, .deleteButton {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
@@ -282,35 +282,23 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Montserrat', sans-serif;
-}
-
-.viewButton {
-  background: #3b82f6;
-  color: white;
-}
-
-.viewButton:hover {
-  background: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .downloadButton {
-  background: #10b981;
+  background: #3b82f6;
   color: white;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .downloadButton:hover {
-  background: #059669;
-}
-
-.downloadButton:disabled,
-.downloadButton.downloading {
-  background: #9ca3af;
-  cursor: not-allowed;
-}
-
-.downloadButton:disabled:hover,
-.downloadButton.downloading:hover {
-  background: #9ca3af;
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
 }
 
 .deleteButton {
@@ -320,6 +308,8 @@
 
 .deleteButton:hover {
   background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 /* Calendar Section */

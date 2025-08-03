@@ -20,7 +20,6 @@ export default function RoomPage() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedUnit, setSelectedUnit] = useState('All');
-  const [downloadingFile, setDownloadingFile] = useState(null);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
@@ -115,82 +114,31 @@ export default function RoomPage() {
 
   const handleDownloadFile = async (file) => {
     try {
-      setDownloadingFile(file._id);
-
+      console.log('Downloading file:', file);
+      
       if (file.type === 'youtube') {
-        // For YouTube links, just open in new tab
         window.open(file.url, '_blank');
-        setDownloadingFile(null);
         return;
       }
-
-      // For other files, create download link
-      let downloadUrl = file.url;
       
-      // If it's a Cloudinary URL, add download transformation
-      if (file.url.includes('cloudinary.com')) {
-        // Add fl_attachment flag to force download
-        downloadUrl = file.url.replace('/upload/', '/upload/fl_attachment/');
-      }
+      // Create download URL with download=true parameter
+      const downloadUrl = `http://localhost:5000/api/files/classrooms/${params.id}/files/${file._id}/proxy?download=true`;
       
-      const response = await fetch(downloadUrl);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch file');
-      }
-      
-      const blob = await response.blob();
-      
-      // Create download link
-      const blobUrl = window.URL.createObjectURL(blob);
+      // Create a temporary link and click it to trigger download
       const link = document.createElement('a');
-      link.href = blobUrl;
-      
-      // Extract file extension from URL or use default based on type
-      let fileExtension = '';
-      
-      // Try to get extension from URL
-      const urlParts = file.url.split('.');
-      if (urlParts.length > 1) {
-        fileExtension = urlParts.pop().split('?')[0];
-      } else {
-        // Fallback based on file type
-        switch (file.type) {
-          case 'pdf':
-            fileExtension = 'pdf';
-            break;
-          case 'image':
-            fileExtension = 'jpg';
-            break;
-          case 'document':
-            fileExtension = 'docx';
-            break;
-          default:
-            fileExtension = 'file';
-        }
-      }
-      
-      // Clean filename and add extension
-      const cleanFileName = file.name.replace(/[^a-zA-Z0-9\-_\s]/g, '');
-      link.download = `${cleanFileName}.${fileExtension}`;
-      
+      link.href = downloadUrl;
+      link.download = file.name;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      // Clean up the URL object
-      window.URL.revokeObjectURL(blobUrl);
-      
-      // Show success message
-      alert(`File "${file.name}" downloaded successfully!`);
-      
     } catch (error) {
       console.error('Error downloading file:', error);
-      alert('Failed to download file. You can try using the View button to access it directly.');
-    } finally {
-      setDownloadingFile(null);
+      alert(`Error downloading file: ${error.message}`);
     }
   };
+
+
 
   const filteredFiles = selectedUnit === 'All' 
     ? files 
@@ -320,17 +268,11 @@ export default function RoomPage() {
                   </div>
                   <div className={styles.fileActions}>
                     <button 
-                      className={styles.viewButton}
-                      onClick={() => window.open(file.url, '_blank')}
-                    >
-                      View
-                    </button>
-                    <button 
-                      className={`${styles.downloadButton} ${downloadingFile === file._id ? styles.downloading : ''}`}
+                      className={styles.downloadButton}
                       onClick={() => handleDownloadFile(file)}
-                      disabled={downloadingFile === file._id}
+                      title="Download file"
                     >
-                      {downloadingFile === file._id ? 'Downloading...' : 'Download'}
+                      Download
                     </button>
                     {user?.role === 'faculty' && (
                       <button 
