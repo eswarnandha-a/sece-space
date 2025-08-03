@@ -131,7 +131,13 @@ exports.proxyFile = async (req, res) => {
               if (contentLength) {
                 res.setHeader('Content-Length', contentLength);
               }
-              res.setHeader('Access-Control-Allow-Origin', '*');
+              // Set CORS headers for file serving
+              const origin = req.headers.origin;
+              if (origin === 'http://localhost:3000' || origin === 'https://sece-space.vercel.app') {
+                res.setHeader('Access-Control-Allow-Origin', origin);
+              } else {
+                res.setHeader('Access-Control-Allow-Origin', '*');
+              }
               res.setHeader('Cache-Control', 'public, max-age=3600');
               
               const disposition = req.query.download === 'true' ? 'attachment' : 'inline';
@@ -179,7 +185,13 @@ exports.proxyFile = async (req, res) => {
       if (contentLength) {
         res.setHeader('Content-Length', contentLength);
       }
-      res.setHeader('Access-Control-Allow-Origin', '*');
+      // Set CORS headers for file serving
+      const origin = req.headers.origin;
+      if (origin === 'http://localhost:3000' || origin === 'https://sece-space.vercel.app') {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+      } else {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+      }
       res.setHeader('Cache-Control', 'public, max-age=3600');
       
       // For viewing, always use inline disposition (unless explicitly requesting download)
