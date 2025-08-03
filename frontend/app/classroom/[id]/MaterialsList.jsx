@@ -19,7 +19,7 @@ export default function MaterialsList({ classroomId, userRole, userId }) {
 
   const fetchMaterials = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/classrooms/${classroomId}/resources`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/classrooms/${classroomId}/resources`);
       if (response.ok) {
         const data = await response.json();
         setMaterials(data.resources || []);
@@ -47,7 +47,7 @@ export default function MaterialsList({ classroomId, userRole, userId }) {
         formData.append('title', uploadData.title);
       }
 
-      const response = await fetch('http://localhost:5000/api/upload', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, {
         method: 'POST',
         body: formData,
       });

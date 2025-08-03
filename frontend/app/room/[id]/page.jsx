@@ -5,6 +5,7 @@ import styles from './page.module.css';
 import AddFilesModal from './AddFilesModal';
 import Calendar from './Calendar';
 import ConfirmationModal from './ConfirmationModal';
+import { apiUrl, API_ENDPOINTS } from '../../../utils/api';
 
 export default function RoomPage() {
   const params = useParams();
@@ -33,7 +34,7 @@ export default function RoomPage() {
 
   const fetchRoomData = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/classrooms/${params.id}`);
+      const response = await fetch(apiUrl(API_ENDPOINTS.CLASSROOM(params.id)));
       if (response.ok) {
         const data = await response.json();
         console.log('Room data:', data); // Debug log
@@ -52,7 +53,7 @@ export default function RoomPage() {
 
   const handleArchiveClass = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/classrooms/${params.id}/archive`, {
+      const response = await fetch(apiUrl(API_ENDPOINTS.CLASSROOM_ARCHIVE(params.id)), {
         method: 'PUT',
       });
       if (response.ok) {
@@ -70,7 +71,7 @@ export default function RoomPage() {
 
   const handleDeleteClass = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/classrooms/${params.id}`, {
+      const response = await fetch(apiUrl(API_ENDPOINTS.CLASSROOM(params.id)), {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -88,7 +89,7 @@ export default function RoomPage() {
 
   const handleDeleteFile = async (fileId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/classrooms/${params.id}/files/${fileId}`, {
+      const response = await fetch(apiUrl(API_ENDPOINTS.DELETE_FILE(params.id, fileId)), {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -122,7 +123,7 @@ export default function RoomPage() {
       }
       
       // Create download URL with download=true parameter
-      const downloadUrl = `http://localhost:5000/api/files/classrooms/${params.id}/files/${file._id}/proxy?download=true`;
+      const downloadUrl = `${apiUrl(API_ENDPOINTS.FILE_PROXY(params.id, file._id))}?download=true`;
       
       // Create a temporary link and click it to trigger download
       const link = document.createElement('a');
